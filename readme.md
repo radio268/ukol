@@ -10,5 +10,6 @@ html css php a možná javascrypt                                               
   page2.html - změna struktury                                                                                                                                   <br>
   page3.html - dalši upravy                                                                                                                                      <br>
                                                                                                                                                                  <br>
-php který je specifický pro každý text vytvoři cookie která vydrží do zavření vyhledávače a bude obsahovat data pro další stránku pro modifikaci vloženého textu <br>
+php který je specifický pro každý php soubor bude přímo v php souboru pro zjednodušení čtitelnosti projektu                                                      <br>
+php vytvoři cookie která vydrží do zavření vyhledávače a bude obsahovat data pro další stránku pro modifikaci vloženého textu                                    <br> 
 
