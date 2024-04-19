@@ -23,29 +23,37 @@
     }
     ?>
 
+
+    <!-- main content  -------------------------------------------------------------------------------------------->
     <main>
 
+    
+    <!-- main form  ----------------------------------------------------------------------------------------------->
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <p>
-                In game name:
-                <input type="string" name="in_game_name" id="in_game_name" required><br>
+                text to be edited:
+                <input type="string" name="text_in" id="text_in" required><br>
 
-                Type of player:
-                <select name="player_type" id="player_type">
-                    <option value="play">player</option>
-                    <option value="talk">talker</option>
-                    <option value="build">builder</option>
-                    <option value="mine">miner</option>
-                    <option value="redstone">redstoner</option>
-                    <option value="prefere not to say">prefer not to say</option>
+                what do you want to do with it:
+                <select name="selection_1" id="selection_1">
+                    <option value="cname"> namechange    </option>
+                    <option value="confg"> configuration </option>
+                    <option value="style"> style         </option>
                 </select><br>
 
-                Why should we whitelist you?:
-                <input type="string" name="aditional_reason" id="additional_reason" required><br>
+                how long should the cookie last:
+                <select name="selection_2" id="selection_2">
+                    <option value="cname"> until website close       </option>
+                    <option value="confg"> until search engine close </option>
+                    <option value="confg"> until pc reboot           </option>
+                    <option value="style"> until the end of time     </option>
+                </select><br>
 
                 <input type="submit" value="go"><br>
             </p>
-                </form>   
+        </form> 
+        
+        
         
     </main>
 
