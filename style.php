@@ -12,9 +12,9 @@
 
 <body>
     <header>
-        <p>name change</p>
+        <p>style</p>
         <li><a href="index.php">go back</a></li>
-        
+
         <?php
             echo $_COOKIE['text'];    
         ?>

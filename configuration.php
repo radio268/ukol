@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <p>name change</p>
+        <p>configuration</p>
         <li><a href="index.php">go back</a></li>
         
         <?php
@@ -20,12 +20,12 @@
         ?>
 
     </header>
-
     
 
 
     <!-- main content  -------------------------------------------------------------------------------------------->
     <main>
+
 
 
     
