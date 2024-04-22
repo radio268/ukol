@@ -1,27 +1,66 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $text_in = $_POST['text_in'];
+    $age = $_POST['selection_2'];
+    $cookie_age = 0;
+
+
+
+    if ($age == "0")
+    {
+        $cookie_age = 0; 
+    }
+    elseif ($age == "1")
+    {
+        $cookie_age = time() + (1 * 24 * 3600); 
+    }
+    elseif ($age == "2")
+    {
+        $cookie_age = time() + (2 * 24 * 3600); 
+    }
+    elseif ($age == "3")
+    {
+        $cookie_age = time() + (7 * 24 * 3600); 
+    }
+    elseif ($age == "4")
+    {
+        $cookie_age = time() + (14 * 24 * 3600); 
+    }
+
+    setcookie( 'text' , $text_in , $cookie_age , "/" );
+    header("Location: name_change.php");
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Pootis-menu</title>
-    <style>
 
+    <style>
+        
     </style>
 </head>
 
 <body>
     <header>
 
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            echo $_COOKIE['text'];
+        }
+    ?>
+
     </header>
 
-    <!-- php scrypt  ---------------------------------------------------------------------------------------------->
-
-    <!--  do not touch it will explode -->
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        echo 'test';
-    }
-    ?>
+    
 
 
     <!-- main content  -------------------------------------------------------------------------------------------->
@@ -43,10 +82,11 @@
 
                 how long should the cookie last:
                 <select name="selection_2" id="selection_2">
-                    <option value="cname"> until website close       </option>
-                    <option value="confg"> until search engine close </option>
-                    <option value="confg"> until pc reboot           </option>
-                    <option value="style"> until the end of time     </option>
+                    <option value="0">until search engine close </option>
+                    <option value="1">  1 x day                 </option>
+                    <option value="2">  2 x day                 </option>
+                    <option value="3">  7 x day                 </option>
+                    <option value="4"> 14 x day                 </option>
                 </select><br>
 
                 <input type="submit" value="go"><br>
