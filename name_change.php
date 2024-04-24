@@ -111,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     echo $text_out;
     
+    setcookie( 'text' , $text_out  , $_COOKIE['age'] , "/" );
 }
 ?>
 
