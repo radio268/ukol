@@ -97,8 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');
     }
 
-    echo $list1;
-    echo $list2;
+
 
     foreach ($list1 as $item) {
         echo $item . "<br>";
