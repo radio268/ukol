@@ -110,8 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 
     echo $text_out;
+    $age = $_COOKIE['age']
     
-    setcookie( 'text' , $text_out  , $_COOKIE['age'] , "/" );
+    setcookie( 'text' , $text_out  , $age , "/" );
 }
 ?>
 
