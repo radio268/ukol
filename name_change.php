@@ -123,9 +123,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <li><a href="index.php">go back</a></li>
         
         <?php
-            echo $_COOKIE['text'];    
+            if ( isset( $_COOKIE['text'] ))
+            {
+                echo $_COOKIE['text'];
+            }
+            else
+            {
+                echo "______";
+            }  
         ?>
-
     </header>
 
     
