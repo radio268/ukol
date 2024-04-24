@@ -1,3 +1,16 @@
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $text_in = $_COOKIE['text'];
+    $selection1 = $_POST['selection_1'];
+    
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
