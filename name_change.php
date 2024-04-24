@@ -1,13 +1,10 @@
 <?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    if ( isset( $_COOKIE['text'] ))
-    {
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    if ( isset( $_COOKIE['text'] )){
         $text_in = $_COOKIE['text'];
     }
-    else
-    {
+    else{
         setcookie( 'text' , "" , 0 , "/" );
         $text_in = $_COOKIE['text'];
     }  
@@ -15,108 +12,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $list1 = array();
     $list2 = array();
 
-    if (isset($_POST['c01']))
-    {
+    if (isset($_POST['c01'])){
         isset($_POST['a01']) ? array_push($list1, $_POST['a01']) : array_push($list1, ' ');
-        isset($_POST['b01']) ? array_push($list2, $_POST['b01']) : array_push($list1, ' ');
-    }
-    if (isset($_POST['c02']))
-    {
+        isset($_POST['b01']) ? array_push($list2, $_POST['b01']) : array_push($list1, ' ');}
+    if (isset($_POST['c02'])){
         isset($_POST['a02']) ? array_push($list1, $_POST['a02']) : array_push($list1, ' ');
-        isset($_POST['b02']) ? array_push($list2, $_POST['b02']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c03']))
-    {
+        isset($_POST['b02']) ? array_push($list2, $_POST['b02']) : array_push($list1, ' ');}
+     if (isset($_POST['c03'])){
         isset($_POST['a03']) ? array_push($list1, $_POST['a03']) : array_push($list1, ' ');
-        isset($_POST['b03']) ? array_push($list2, $_POST['b03']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c04']))
-    {
+        isset($_POST['b03']) ? array_push($list2, $_POST['b03']) : array_push($list1, ' ');}
+     if (isset($_POST['c04'])){
         isset($_POST['a04']) ? array_push($list1, $_POST['a04']) : array_push($list1, ' ');
-        isset($_POST['b04']) ? array_push($list2, $_POST['b04']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c05']))
-    {
+        isset($_POST['b04']) ? array_push($list2, $_POST['b04']) : array_push($list1, ' ');}
+     if (isset($_POST['c05'])){
         isset($_POST['a05']) ? array_push($list1, $_POST['a05']) : array_push($list1, ' ');
-        isset($_POST['b05']) ? array_push($list2, $_POST['b05']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c06']))
-    {
+        isset($_POST['b05']) ? array_push($list2, $_POST['b05']) : array_push($list1, ' ');}
+     if (isset($_POST['c06'])){
         isset($_POST['a06']) ? array_push($list1, $_POST['a06']) : array_push($list1, ' ');
-        isset($_POST['b06']) ? array_push($list2, $_POST['b06']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c07']))
-    {
+        isset($_POST['b06']) ? array_push($list2, $_POST['b06']) : array_push($list1, ' ');}
+     if (isset($_POST['c07'])){
         isset($_POST['a07']) ? array_push($list1, $_POST['a07']) : array_push($list1, ' ');
-        isset($_POST['b07']) ? array_push($list2, $_POST['b07']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c08']))
-    {
+        isset($_POST['b07']) ? array_push($list2, $_POST['b07']) : array_push($list1, ' ');}
+     if (isset($_POST['c08'])){
         isset($_POST['a08']) ? array_push($list1, $_POST['a08']) : array_push($list1, ' ');
-        isset($_POST['b08']) ? array_push($list2, $_POST['b08']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c09']))
-    {
+        isset($_POST['b08']) ? array_push($list2, $_POST['b08']) : array_push($list1, ' ');}
+     if (isset($_POST['c09'])){
         isset($_POST['a09']) ? array_push($list1, $_POST['a09']) : array_push($list1, ' ');
-        isset($_POST['b09']) ? array_push($list2, $_POST['b09']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c10']))
-    {
+        isset($_POST['b09']) ? array_push($list2, $_POST['b09']) : array_push($list1, ' ');}
+     if (isset($_POST['c10'])){
         isset($_POST['a10']) ? array_push($list1, $_POST['a10']) : array_push($list1, ' ');
-        isset($_POST['b10']) ? array_push($list2, $_POST['b10']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c11']))
-    {
+        isset($_POST['b10']) ? array_push($list2, $_POST['b10']) : array_push($list1, ' ');}
+     if (isset($_POST['c11'])){
         isset($_POST['a11']) ? array_push($list1, $_POST['a11']) : array_push($list1, ' ');
-        isset($_POST['b11']) ? array_push($list2, $_POST['b11']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c12']))
-    {
+        isset($_POST['b11']) ? array_push($list2, $_POST['b11']) : array_push($list1, ' ');}
+     if (isset($_POST['c12'])){
         isset($_POST['a12']) ? array_push($list1, $_POST['a12']) : array_push($list1, ' ');
-        isset($_POST['b12']) ? array_push($list2, $_POST['b12']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c13']))
-    {
+        isset($_POST['b12']) ? array_push($list2, $_POST['b12']) : array_push($list1, ' ');}
+     if (isset($_POST['c13'])){
         isset($_POST['a13']) ? array_push($list1, $_POST['a13']) : array_push($list1, ' ');
-        isset($_POST['b13']) ? array_push($list2, $_POST['b13']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c14']))
-    {
+        isset($_POST['b13']) ? array_push($list2, $_POST['b13']) : array_push($list1, ' ');}
+     if (isset($_POST['c14'])){
         isset($_POST['a14']) ? array_push($list1, $_POST['a14']) : array_push($list1, ' ');
-        isset($_POST['b14']) ? array_push($list2, $_POST['b14']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c15']))
-    {
+        isset($_POST['b14']) ? array_push($list2, $_POST['b14']) : array_push($list1, ' ');}
+     if (isset($_POST['c15'])){
         isset($_POST['a15']) ? array_push($list1, $_POST['a15']) : array_push($list1, ' ');
-        isset($_POST['b15']) ? array_push($list2, $_POST['b15']) : array_push($list1, ' ');
-    }
-     if (isset($_POST['c16']))
-    {
+        isset($_POST['b15']) ? array_push($list2, $_POST['b15']) : array_push($list1, ' ');}
+     if (isset($_POST['c16'])){
         isset($_POST['a16']) ? array_push($list1, $_POST['a16']) : array_push($list1, ' ');
-        isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');
-    }
+        isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');}
 
     $text_out = $text_in;
     
-    if (isset($_POST['type']))
-    {
+    if (isset($_POST['type'])){
         $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
-        $text_out = preg_replace($searchPattern, $list2, $text);
+        $text_out = preg_replace($searchPattern, $list2, $text_in);
     }
-    else
-    {
+    else{
         $text_out = str_replace($list1, $list2, $text_out);
     }
-
 
     echo $text_out;
     $age = $_COOKIE['age']
     
     setcookie( 'text' , $text_out  , $age , "/" );
-}
-?>
-
-
+}?>
 
 
 <!DOCTYPE html>
@@ -127,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Pootis-menu</title>
 
     <style>
-        
     </style>
 </head>
 
@@ -147,9 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             }  
         ?>
     </header>
-
-    
-
 
     <!-- main content  -------------------------------------------------------------------------------------------->
     <main>
@@ -175,7 +130,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 <input type="string" name="a16" id="a16"><input type="string" name="b16" id="b16"><input type="checkbox" name="c16" id="c16"><br>
 
                 <input type="submit" value="go"><br>
-            
         </form> 
     </main>
     <footer>
