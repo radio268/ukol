@@ -4,6 +4,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $text_in = $_COOKIE['text'];
     $selection1 = $_POST['selection_1'];
+    $list1 = array();
+    $list2 = array();
+
+    if (isset($_POST['c01'])) {
+        array_push($list1, $_POST['a01']);
+        array_push($list2, $_POST['b01']);
+    } else {
+        echo "Checkbox 1 is not checked.";
+    }
+
+
+
+    foreach ($list as $item) {
+    echo $item . "<br>";
+}
     
 }
 ?>
