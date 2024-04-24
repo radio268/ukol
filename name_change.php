@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');
     }
 
-    $text_out = "what ? what? what???";
+    $text_out = $text_in;
     
     if (isset($_POST['type']))
     {
@@ -153,12 +153,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <!-- main content  -------------------------------------------------------------------------------------------->
     <main>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <p>
-                <input type="string" name="text_in" id="text_in"><br>
+            
                 <input type="checkbox" name="type" id="type"><br>
-
-                what do you want to do with it:<br>
-                
+            
                 <input type="string" name="a01" id="a01"><input type="string" name="b01" id="b01"><input type="checkbox" name="c01" id="c01"><br>
                 <input type="string" name="a02" id="a02"><input type="string" name="b02" id="b02"><input type="checkbox" name="c02" id="c02"><br>
                 <input type="string" name="a03" id="a03"><input type="string" name="b03" id="b03"><input type="checkbox" name="c03" id="c03"><br>
@@ -176,24 +173,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 <input type="string" name="a15" id="a15"><input type="string" name="b15" id="b15"><input type="checkbox" name="c15" id="c15"><br>
                 <input type="string" name="a16" id="a16"><input type="string" name="b16" id="b16"><input type="checkbox" name="c16" id="c16"><br>
 
-                
                 <input type="submit" value="go"><br>
-            </p>
+            
         </form> 
-
-
-    
-    <!-- main form  ----------------------------------------------------------------------------------------------->
-        
-        
-        
-        
     </main>
-
     <footer>
         <p>&copy; 2023 Pootis</p>
     </footer>
-
 </body>
-
 </html>
