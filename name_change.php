@@ -132,6 +132,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" value="go"><br>
         </form>
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function()
+            {
+                var inputs = document.querySelectorAll("input[type='text'], input[type='checkbox']");
+                inputs.forEach(function(input, index)
+                {
+                    input.addEventListener("keydown", function(event)
+                    {
+                        var numRows = 16; // Change this to the number of rows in your grid
+                        var numCols = 3; // Change this to the number of columns in your grid
+            
+                        if (event.key === "ArrowDown")
+                        {
+                            var nextIndex = (index + numCols) % inputs.length;
+                            inputs[nextIndex].focus();
+                        }
+                        else if (event.key === "ArrowUp")
+                        {
+                            var prevIndex = (index - numCols + inputs.length) % inputs.length;
+                            inputs[prevIndex].focus();
+                        }
+                        else if (event.key === "ArrowRight")
+                        {
+                            var nextIndex = (index + 1) % inputs.length;
+                            inputs[nextIndex].focus();
+                        }
+                        else if (event.key === "ArrowLeft")
+                        {
+                            var prevIndex = (index - 1 + inputs.length) % inputs.length;
+                            inputs[prevIndex].focus();
+                        }
+                });
+            });
+        });
+    </script>
+
         
     </main>
     <footer>
