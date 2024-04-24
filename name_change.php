@@ -96,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');
     }
 
+    $text_out = "";
     
     if (isset($_POST['type']))
     {
