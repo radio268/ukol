@@ -31,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 
-    setcookie( 'text' , $text_in , $cookie_age , "/" );
+    setcookie( 'text' , $text_in   , $cookie_age , "/" );
+    setcookie( 'age'  , $cooke_age , $cookie_age , "/" );
 
 
     if     ($selection1 == "cname")
