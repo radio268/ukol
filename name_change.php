@@ -12,19 +12,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         array_push($list1, $_POST['a01']);
         array_push($list2, $_POST['b01']);
     }
-    
-    if (isset($_POST['c01']))
+    if (isset($_POST['c02']))
     {
-        array_push($list1, $_POST['a01']);
-        array_push($list2, $_POST['b01']);
+        array_push($list1, $_POST['a02']);
+        array_push($list2, $_POST['b02']);
     }
-    
+     if (isset($_POST['c03']))
+    {
+        array_push($list1, $_POST['a03']);
+        array_push($list2, $_POST['b03']);
+    }
+     if (isset($_POST['c04']))
+    {
+        array_push($list1, $_POST['a04']);
+        array_push($list2, $_POST['b04']);
+    }
+     if (isset($_POST['c05']))
+    {
+        array_push($list1, $_POST['a05']);
+        array_push($list2, $_POST['b05']);
+    }
+     if (isset($_POST['c06']))
+    {
+        array_push($list1, $_POST['a06']);
+        array_push($list2, $_POST['b06']);
+    }
+     if (isset($_POST['c07']))
+    {
+        array_push($list1, $_POST['a07']);
+        array_push($list2, $_POST['b07']);
+    }
+     if (isset($_POST['c08']))
+    {
+        array_push($list1, $_POST['a08']);
+        array_push($list2, $_POST['b08']);
+    }
+     if (isset($_POST['c09']))
+    {
+        array_push($list1, $_POST['a09']);
+        array_push($list2, $_POST['b09']);
+    }
+     if (isset($_POST['c10']))
+    {
+        array_push($list1, $_POST['a10']);
+        array_push($list2, $_POST['b10']);
+    }
+     if (isset($_POST['c11']))
+    {
+        array_push($list1, $_POST['a11']);
+        array_push($list2, $_POST['b11']);
+    }
+     if (isset($_POST['c12']))
+    {
+        array_push($list1, $_POST['a12']);
+        array_push($list2, $_POST['b12']);
+    }
+     if (isset($_POST['c13']))
+    {
+        array_push($list1, $_POST['a13']);
+        array_push($list2, $_POST['b13']);
+    }
+     if (isset($_POST['c14']))
+    {
+        array_push($list1, $_POST['a14']);
+        array_push($list2, $_POST['b14']);
+    }
+     if (isset($_POST['c15']))
+    {
+        array_push($list1, $_POST['a15']);
+        array_push($list2, $_POST['b15']);
+    }
+     if (isset($_POST['c16']))
+    {
+        array_push($list1, $_POST['a16']);
+        array_push($list2, $_POST['b16']);
+    }
 
-
+    echo $list1;
+    echo $list2;
 
     foreach ($list as $item) {
-    echo $item . "<br>";
-}
+        echo $item . "<br>";
+    }
     
 }
 ?>
@@ -64,7 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             <p>
                 <input type="string" name="text_in" id="text_in"><br>
 
-                what do you want to do with it:
+                what do you want to do with it:<br>
+                
                 <input type="string" name="a01" id="a01"><input type="string" name="b01" id="b01"><input type="checkbox" name="c01" id="c01"><br>
                 <input type="string" name="a02" id="a02"><input type="string" name="b02" id="b02"><input type="checkbox" name="c02" id="c02"><br>
                 <input type="string" name="a03" id="a03"><input type="string" name="b03" id="b03"><input type="checkbox" name="c03" id="c03"><br>
