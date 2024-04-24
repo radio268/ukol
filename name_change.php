@@ -2,7 +2,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-
     if ( isset( $_COOKIE['text'] ))
     {
         $text_in = $_COOKIE['text'];
@@ -12,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         setcookie( 'text' , "" , 0 , "/" );
         $text_in = $_COOKIE['text'];
     }  
-    
     
     $list1 = array();
     $list2 = array();
@@ -98,51 +96,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');
     }
 
-
-
-    foreach ($list1 as $item) {
-        echo $item . "<br>";
-    }
-
-    foreach ($list2 as $item) {
-        echo $item . "<br>";
-    }
-
-
-    
-    $loop = 1;
-
-
     
     if (isset($_POST['type']))
-    {
-        $text_out = str_replace($list1, $list2, $text_out);
-    }
-        
-    else
     {
         $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
         $text_out = preg_replace($searchPattern, $list2, $text);
     }
-
-    // Example text and list of words
-$text = "This is a sample text with some sample words.";
-$searchWords = array("sample", "words");
-$replaceWords = array("replacement1", "replacement2");
-
-// Version 1: Replace any existence of the word
-$result_version1 = str_replace($searchWords, $replaceWords, $text);
-echo $text_out;
-
-// Version 2: Replace only whole words
-$searchPattern = '/\b(' . implode('|', array_map('preg_quote', $searchWords)) . ')\b/';
-$result_version2 = preg_replace($searchPattern, $replaceWords, $text);
-echo "Version 2: $result_version2";
+    else
+    {
+        $text_out = str_replace($list1, $list2, $text_out);
+    }
 
 
-
-    
-    
+    echo $text_out;
     
 }
 ?>
