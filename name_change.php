@@ -78,10 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         {$age = $_COOKIE['age'];}
     else
         {$age = 0;}
-    
-    setcookie( 'text' , $text_out  , $age , "/" );
-    sleep(0.25);
-    echo '<script>window.location.reload();</script>';
+
+    if (text_out == _COOKIE['text'])
+    {
+        setcookie( 'text' , $text_out  , $age , "/" );
+        sleep(0.25);
+        echo '<script>window.location.reload();</script>';
+    }
 }?>
 
 
