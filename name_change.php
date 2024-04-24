@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     else
     {
         setcookie( 'text' , "" , 0 , "/" );
+        $text_in = $_COOKIE['text'];
     }  
     
     
@@ -106,6 +107,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     foreach ($list2 as $item) {
         echo $item . "<br>";
     }
+
+
+    
+    $loop = 1;
+
+
+    
+    if (isset($_POST['type']))
+    {
+        $text_out = str_replace($list1, $list2, $text_out);
+    }
+        
+    else
+    {
+        $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
+        $text_out = preg_replace($searchPattern, $list2, $text);
+    }
+
+    // Example text and list of words
+$text = "This is a sample text with some sample words.";
+$searchWords = array("sample", "words");
+$replaceWords = array("replacement1", "replacement2");
+
+// Version 1: Replace any existence of the word
+$result_version1 = str_replace($searchWords, $replaceWords, $text);
+echo $text_out;
+
+// Version 2: Replace only whole words
+$searchPattern = '/\b(' . implode('|', array_map('preg_quote', $searchWords)) . ')\b/';
+$result_version2 = preg_replace($searchPattern, $replaceWords, $text);
+echo "Version 2: $result_version2";
+
+
+
+    
+    
     
 }
 ?>
@@ -150,6 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <p>
                 <input type="string" name="text_in" id="text_in"><br>
+                <input type="checkbox" name="type" id="type"><br>
 
                 what do you want to do with it:<br>
                 
