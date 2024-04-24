@@ -3,7 +3,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $text_in = $_COOKIE['text'];
-    $selection1 = $_POST['selection_1'];
+    
     $list1 = array();
     $list2 = array();
 
@@ -91,7 +91,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     echo $list1;
     echo $list2;
 
-    foreach ($list as $item) {
+    foreach ($list1 as $item) {
+        echo $item . "<br>";
+    }
+
+    foreach ($list2 as $item) {
         echo $item . "<br>";
     }
     
