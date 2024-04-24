@@ -2,7 +2,16 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $text_in = $_COOKIE['text'];
+
+    if ( isset( $_COOKIE['text'] ))
+    {
+        $text_in = $_COOKIE['text'];
+    }
+    else
+    {
+                
+    }  
+    
     
     $list1 = array();
     $list2 = array();
