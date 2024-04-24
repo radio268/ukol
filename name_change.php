@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if (isset($_POST['type'])){
         $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
-        $text_out = preg_replace($searchPattern, $list2, $text_in);
+        $text_out = preg_replace($searchPattern, implode(' ', $list2), $text_in);
     }
     else{
         $text_out = str_replace($list1, $list2, $text_out);
