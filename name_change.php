@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     else
         {$age = 0;}
 
-    if (text_out == _COOKIE['text'])
+    if (text_out == $_COOKIE['text'])
     {
         setcookie( 'text' , $text_out  , $age , "/" );
         sleep(0.25);
