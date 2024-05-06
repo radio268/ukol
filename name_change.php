@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         isset($_POST['b02']) ? array_push($list2, $_POST['b02']) : array_push($list2, ' ');}
     if (isset($_POST['c03'])){
         isset($_POST['a03']) ? array_push($list1, $_POST['a03']) : array_push($list1, ' ');
-        isset($_POST['b03']) ? array_push($list2, $_POST['b03']) : array_push($list1, ' ');}
+        isset($_POST['b03']) ? array_push($list2, $_POST['b03']) : array_push($list2, ' ');}
     if (isset($_POST['c04'])){
         isset($_POST['a04']) ? array_push($list1, $_POST['a04']) : array_push($list1, ' ');
         isset($_POST['b04']) ? array_push($list2, $_POST['b04']) : array_push($list2, ' ');}
