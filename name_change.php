@@ -64,14 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $text_out = $text_in;
     
-    if (isset($_POST['type']))
-    {
+    if (isset($_POST['type'])) {
         $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
         $text_out = preg_replace($searchPattern, implode(' ', $list2), $text_in);
+    } else {
+        $text_out = str_replace($list1, $list2, $text_out);
     }
-    else
-        {$text_out = str_replace($list1, $list2, $text_out);}
-
     
     if (isset($_COOKIE['age']))
         {$age = $_COOKIE['age'];}
