@@ -19,46 +19,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (isset($_POST['c02'])){
         isset($_POST['a02']) ? array_push($list1, $_POST['a02']) : array_push($list1, ' ');
         isset($_POST['b02']) ? array_push($list2, $_POST['b02']) : array_push($list1, ' ');}
-     if (isset($_POST['c03'])){
+    if (isset($_POST['c03'])){
         isset($_POST['a03']) ? array_push($list1, $_POST['a03']) : array_push($list1, ' ');
         isset($_POST['b03']) ? array_push($list2, $_POST['b03']) : array_push($list1, ' ');}
-     if (isset($_POST['c04'])){
+    if (isset($_POST['c04'])){
         isset($_POST['a04']) ? array_push($list1, $_POST['a04']) : array_push($list1, ' ');
         isset($_POST['b04']) ? array_push($list2, $_POST['b04']) : array_push($list1, ' ');}
-     if (isset($_POST['c05'])){
+    if (isset($_POST['c05'])){
         isset($_POST['a05']) ? array_push($list1, $_POST['a05']) : array_push($list1, ' ');
         isset($_POST['b05']) ? array_push($list2, $_POST['b05']) : array_push($list1, ' ');}
-     if (isset($_POST['c06'])){
+    if (isset($_POST['c06'])){
         isset($_POST['a06']) ? array_push($list1, $_POST['a06']) : array_push($list1, ' ');
         isset($_POST['b06']) ? array_push($list2, $_POST['b06']) : array_push($list1, ' ');}
-     if (isset($_POST['c07'])){
+    if (isset($_POST['c07'])){
         isset($_POST['a07']) ? array_push($list1, $_POST['a07']) : array_push($list1, ' ');
         isset($_POST['b07']) ? array_push($list2, $_POST['b07']) : array_push($list1, ' ');}
-     if (isset($_POST['c08'])){
+    if (isset($_POST['c08'])){
         isset($_POST['a08']) ? array_push($list1, $_POST['a08']) : array_push($list1, ' ');
         isset($_POST['b08']) ? array_push($list2, $_POST['b08']) : array_push($list1, ' ');}
-     if (isset($_POST['c09'])){
+    if (isset($_POST['c09'])){
         isset($_POST['a09']) ? array_push($list1, $_POST['a09']) : array_push($list1, ' ');
         isset($_POST['b09']) ? array_push($list2, $_POST['b09']) : array_push($list1, ' ');}
-     if (isset($_POST['c10'])){
+    if (isset($_POST['c10'])){
         isset($_POST['a10']) ? array_push($list1, $_POST['a10']) : array_push($list1, ' ');
         isset($_POST['b10']) ? array_push($list2, $_POST['b10']) : array_push($list1, ' ');}
-     if (isset($_POST['c11'])){
+    if (isset($_POST['c11'])){
         isset($_POST['a11']) ? array_push($list1, $_POST['a11']) : array_push($list1, ' ');
         isset($_POST['b11']) ? array_push($list2, $_POST['b11']) : array_push($list1, ' ');}
-     if (isset($_POST['c12'])){
+    if (isset($_POST['c12'])){
         isset($_POST['a12']) ? array_push($list1, $_POST['a12']) : array_push($list1, ' ');
         isset($_POST['b12']) ? array_push($list2, $_POST['b12']) : array_push($list1, ' ');}
-     if (isset($_POST['c13'])){
+    if (isset($_POST['c13'])){
         isset($_POST['a13']) ? array_push($list1, $_POST['a13']) : array_push($list1, ' ');
         isset($_POST['b13']) ? array_push($list2, $_POST['b13']) : array_push($list1, ' ');}
-     if (isset($_POST['c14'])){
+    if (isset($_POST['c14'])){
         isset($_POST['a14']) ? array_push($list1, $_POST['a14']) : array_push($list1, ' ');
         isset($_POST['b14']) ? array_push($list2, $_POST['b14']) : array_push($list1, ' ');}
-     if (isset($_POST['c15'])){
+    if (isset($_POST['c15'])){
         isset($_POST['a15']) ? array_push($list1, $_POST['a15']) : array_push($list1, ' ');
         isset($_POST['b15']) ? array_push($list2, $_POST['b15']) : array_push($list1, ' ');}
-     if (isset($_POST['c16'])){
+    if (isset($_POST['c16'])){
         isset($_POST['a16']) ? array_push($list1, $_POST['a16']) : array_push($list1, ' ');
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list1, ' ');}
 
@@ -82,9 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if ($text_out != $_COOKIE['text'])
     {
         setcookie( 'text' , $text_out  , $age , "/" );
-        sleep(0.25);
-        echo '<script>window.location.reload();</script>';
     }
+
 }?>
 
 
@@ -104,16 +103,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <p>name change</p>
         <li><a href="index.php">go back</a></li>
         
-        <?php
-            if ( isset( $_COOKIE['text'] ))
-            {
-                echo $_COOKIE['text'];
-            }
-            else
-            {
-                echo "______";
-            }  
-        ?>
+        <p id="cookieText"></p>
+
+        <script>
+            setInterval(function() {
+                var text = getCookie('text');
+                var textElement = document.getElementById('cookieText');
+                if (text !== null)
+                {
+                    textElement.textContent = decodeURIComponent(text);
+                }
+                else
+                {
+                    textElement.textContent = "______";
+                }
+            }, 500);
+
+            function getCookie(name) {
+            var cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith(name + '='))
+                ?.split('=')[1];
+            return cookieValue;
+}
+        </script>
+
     </header>
 
     <!-- main content  -------------------------------------------------------------------------------------------->
