@@ -29,6 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $cookie_age = time() + (14 * 24 * 3600); 
     }
+    else
+    {
+        $cooke_age = 0;
+    }
 
 
     setcookie( 'text' , $text_in   , $cookie_age , "/" );
