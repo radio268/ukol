@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 
-    setcookie( 'text' , $text_in   , $cookie_age , "/" );
+    setcookie('text', urlencode($text_out), $cookie_age, "/");
     setcookie( 'age'  , $cookie_age , $cookie_age , "/" );
 
 

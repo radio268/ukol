@@ -3,11 +3,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     
     if ( isset( $_COOKIE['text'] ))
-        {$text_in = $_COOKIE['text'];}
+    {
+        $text_in = isset($_COOKIE['text']) ? urldecode($_COOKIE['text']) : "";
+    }
     else
     {
         setcookie( 'text' , "" , 0 , "/" );
-        $text_in = $_COOKIE['text'];
+        $text_in = isset($_COOKIE['text']) ? urldecode($_COOKIE['text']) : "";
     }  
     
     $list1 = array();
@@ -64,21 +66,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $text_out = $text_in;
     
-    if (isset($_POST['type'])) {
-        $searchPattern = '/\b(' . implode('|', array_map('preg_quote', $list1)) . ')\b/';
-        $text_out = preg_replace($searchPattern, implode(' ', $list2), $text_in);
-    } else {
-        $text_out = str_replace($list1, $list2, $text_out);
+    foreach ($list1 as $index => $item)
+    {
+        $text_out = str_replace($item, $list2[$index], $text_out);
     }
     
     if (isset($_COOKIE['age']))
-        {$age = $_COOKIE['age'];}
+        {$cookie_age = $_COOKIE['age'];}
     else
-        {$age = 0;}
+        {$cookie_age = 0;}
 
     if ($text_out != $_COOKIE['text'])
     {
-        setcookie( 'text' , $text_out  , $age , "/" );
+        setcookie('text', urlencode($text_out), $cookie_age, "/");
     }
 
 }?>
