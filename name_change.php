@@ -1,15 +1,18 @@
 <?php
+
+if (isset($_COOKIE['text'])) {
+    $text_in = base64_decode($_COOKIE['text']);
+}
+else
+{
+    setcookie('text', "error empty", 0, "/");
+    $text_in = "error empty";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
-    if (isset($_COOKIE['text'])) {
-        $text_in = urldecode($_COOKIE['text']);
-    }
-    else
-    {
-        setcookie('text', "", 0, "/");
-        $text_in = "";
-    }
+    
     
     $list1 = array();
     $list2 = array();
@@ -73,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $cookie_age = isset($_COOKIE['age']) ? $_COOKIE['age'] : 0;
 
     if ($text_out != $text_in) {
-        setcookie('text', urlencode($text_out), $cookie_age, "/");
+        setcookie('text', base64_encode($text_out), $cookie_age, "/");
     }
 
 }?>
@@ -96,28 +99,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <li><a href="index.php">go back</a></li>
         <br>
         <br>
+
+
         <p id="cookieText">!</p>
 
         <script>
-            function getCookie(name) {
+            function getCookie(name)
+            {
                 let nameEQ = name + "=";
                 let ca = document.cookie.split(';');
-                for(let i = 0; i < ca.length; i++) {
+                for(let i = 0; i < ca.length; i++)
+                {
                     let c = ca[i];
                     while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
                 }
                 return null;
             }
 
-            
-            function updateCookieText() {
-                let text = getCookie('text');
-                let textElement.textContent = text !== null ? decodeURIComponent(text) : "______";
+            function updateCookieText()
+            {
+                let encodedText = getCookie('text');
+                let textElement = document.getElementById('cookieText');
+                let text = encodedText !== null ? atob(decodeURIComponent(encodedText)) : "______"; // Decode the cookie value using base64
+                textElement.textContent = text;
             }
 
             setInterval(updateCookieText, 500);
         </script>
+
+
     </header>
 
     <!-- main content  -------------------------------------------------------------------------------------------->
