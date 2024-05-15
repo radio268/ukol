@@ -1,19 +1,20 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    
-    if ( isset( $_COOKIE['text'] ))
-    {
-        $text_in = isset($_COOKIE['text']) ? urldecode($_COOKIE['text']) : "";
+
+    if (isset($_COOKIE['text'])) {
+        $text_in = urldecode($_COOKIE['text']);
     }
     else
     {
-        setcookie( 'text' , "" , 0 , "/" );
-        $text_in = isset($_COOKIE['text']) ? urldecode($_COOKIE['text']) : "";
-    }  
+        setcookie('text', "", 0, "/");
+        $text_in = "";
+    }
     
     $list1 = array();
     $list2 = array();
+    $text_out = $text_in;
+
 
     if (isset($_POST['c01'])){
         isset($_POST['a01']) ? array_push($list1, $_POST['a01']) : array_push($list1, ' ');
@@ -63,21 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (isset($_POST['c16'])){
         isset($_POST['a16']) ? array_push($list1, $_POST['a16']) : array_push($list1, ' ');
         isset($_POST['b16']) ? array_push($list2, $_POST['b16']) : array_push($list2, ' ');}
-
-    $text_out = $text_in;
     
     foreach ($list1 as $index => $item)
     {
         $text_out = str_replace($item, $list2[$index], $text_out);
     }
     
-    if (isset($_COOKIE['age']))
-        {$cookie_age = $_COOKIE['age'];}
-    else
-        {$cookie_age = 0;}
+    $cookie_age = isset($_COOKIE['age']) ? $_COOKIE['age'] : 0;
 
-    if ($text_out != $_COOKIE['text'])
-    {
+    if ($text_out != $text_in) {
         setcookie('text', urlencode($text_out), $cookie_age, "/");
     }
 
@@ -89,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <head>
     <meta charset="UTF-8">
-    <title>Pootis-menu</title>
+    <title>Pootis-namechage</title>
 
     <style>
     </style>
@@ -97,34 +92,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <body>
     <header>
-        <p>name change</p>
+        <h1>name change</h1>
         <li><a href="index.php">go back</a></li>
-        
-        <p id="cookieText"></p>
+        <br>
+        <br>
+        <p id="cookieText">!</p>
 
         <script>
-            setInterval(function() {
-                var text = getCookie('text');
-                var textElement = document.getElementById('cookieText');
-                if (text !== null)
-                {
-                    textElement.textContent = decodeURIComponent(text);
-                }
-                else
-                {
-                    textElement.textContent = "______";
-                }
-            }, 500);
-
             function getCookie(name) {
-            var cookieValue = document.cookie
-                .split('; ')
-                .find(row => row.startsWith(name + '='))
-                ?.split('=')[1];
-            return cookieValue;
-}
-        </script>
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+                }
+                return null;
+            }
 
+            
+            function updateCookieText() {
+                let text = getCookie('text');
+                let textElement.textContent = text !== null ? decodeURIComponent(text) : "______";
+            }
+
+            setInterval(updateCookieText, 500);
+        </script>
     </header>
 
     <!-- main content  -------------------------------------------------------------------------------------------->
