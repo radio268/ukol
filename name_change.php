@@ -104,12 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <p id="cookieText">!</p>
 
         <script>
-            function getCookie(name)
-            {
+            let previousText = "";
+
+            function getCookie(name) {
                 let nameEQ = name + "=";
                 let ca = document.cookie.split(';');
-                for(let i = 0; i < ca.length; i++)
-                {
+                for (let i = 0; i < ca.length; i++) {
                     let c = ca[i];
                     while (c.charAt(0) === ' ') c = c.substring(1, c.length);
                     if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
@@ -121,10 +121,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 let encodedText = getCookie('text');
                 let textElement = document.getElementById('cookieText');
-                let text = encodedText !== null ? atob(decodeURIComponent(encodedText)) : "______"; // Decode the cookie value using base64
-                textElement.textContent = text;
+                let text = encodedText !== null ? atob(decodeURIComponent(encodedText)) : "______";
+                text = text.replace(/\n/g, '<br>');
+                if (text !== previousText)
+                {
+                    textElement.innerHTML = text;
+                    previousText = text;
+                }
             }
-
             setInterval(updateCookieText, 500);
         </script>
 
