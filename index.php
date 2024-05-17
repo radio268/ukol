@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Pootis-menu</title>
 
     <style>
-        
+
     </style>
 </head>
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <p>
                 text to be edited:
-                <textarea name="text_in" id="text_in" rows="4" cols="50"></textarea><br>
+                <textarea name="text_in" id="text_in" rows="4" cols="50" style="white-space: pre-wrap;"></textarea><br>
 
                 what do you want to do with it:
                 <select name="selection_1" id="selection_1">
