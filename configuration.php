@@ -1,51 +1,88 @@
 <?php
 
 function cleancode1($input) {
-    // Split the input text into lines
     $lines = preg_split("/\R/", $input);
 
-    // Initialize an array to hold the modified lines
     $modifiedLines = [];
+    $previousLeadingSpaces = '';
 
-    // Loop through each line
-    foreach ($lines as $line) {
-        // Check if the line consists only of '{'
+    foreach ($lines as $line)
+    {
         if (trim($line) === '{') {
-            // If so, add a new line with the same leading spaces or tabs followed by '{'
-            $modifiedLines[] = $line;
-        } elseif (preg_match('/^(.*?)(\s*)\{$/', $line, $matches)) {
-            // $matches[1] contains the part of the line before '{'
-            // $matches[2] contains the leading spaces or tabs before '{'
-
-            // Remove the '{' and append the line without it
-            $modifiedLines[] = $matches[1];
-
-            // Add a new line with the same leading spaces or tabs followed by '{'
-            $modifiedLines[] = $matches[2] . '{';
-        } else {
-            // If the line doesn't end with a '{', add it as is
+            $modifiedLines[] = $previousLeadingSpaces . '{';
+        }
+        elseif (preg_match('/^(\s*)(.*?)\{$/', $line, $matches))
+        {
+            $previousLeadingSpaces = $matches[1];
+            $modifiedLines[] = $matches[1] . $matches[2];
+            $modifiedLines[] = $matches[1] . '{';
+        }
+        else
+        {
+            if (preg_match('/^(\s*)/', $line, $matches))
+            {
+                $previousLeadingSpaces = $matches[1];
+            }
             $modifiedLines[] = $line;
         }
     }
-
-    // Join the modified lines back into a single string
     return implode("\n", $modifiedLines);
 }
 
 
-if (isset($_COOKIE['text']))
+function cleancode2($input) 
 {
-    $text_in = base64_decode($_COOKIE['text']);
+    $formatted = preg_replace('/\s*=\s*/', ' = ', $input);
+    $formatted = str_replace('= =', '==',  $formatted);
+    $formatted = str_replace('=  =', '==', $formatted);
+    $formatted = str_replace('= !', '=!',  $formatted);
+    return $formatted;
 }
-else
-{
-    setcookie('text', "error empty", 0, "/");
-    $text_in = "error empty";
+
+function cleancode3($input) {
+    $lines = preg_split("/\R/", $input);
+    $modifiedLines = [];
+
+    foreach ($lines as $line) {
+        preg_match('/^\s*/', $line, $matches);
+        $leadingSpaces = $matches[0];
+
+        $nearestMultipleOf3 = round(strlen($leadingSpaces) / 3) * 3;
+        $modifiedLine = str_repeat(' ', $nearestMultipleOf3) . ltrim($line);
+
+        $modifiedLines[] = $modifiedLine;
+    }
+    return implode("\n", $modifiedLines);
 }
-if (!(isset($_COOKIE['age'])))
-{
-    setcookie('age', 0, 0, "/");
+
+function cleancode4($input, $preserveChars = []) {
+    $lines = explode("\n", $input);
+
+    $modifiedLines = [];
+
+    foreach ($lines as $line) {
+        $line = preg_replace('/\/\/.*$/', '', $line);
+
+        $preserve = false;
+        foreach ($preserveChars as $char) {
+            if (strpos($line, $char, strpos($line, '//')) !== false) {
+                $preserve = true;
+                break;
+            }
+        }
+        if (!$preserve) {
+            $modifiedLines[] = $line;
+        }
+    }
+    return implode("\n", $modifiedLines);
 }
+
+
+
+if (isset($_COOKIE['text'])) {$text_in = base64_decode($_COOKIE['text']);}
+else{ setcookie('text', "error empty", 0, "/");$text_in = "error empty";}
+
+if (!(isset($_COOKIE['age']))){ setcookie('age', 0, 0, "/");}
 
 
 
@@ -54,34 +91,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $text_out = $text_in;
 
     if (isset($_POST['a01']))
-    {
+    {// { cleaning
         $text_out = cleancode1($text_in);
     }
     if (isset($_POST['a02']))
-    {
-
+    {// = cleaning
+        $text_out = cleancode2($text_in);
     }
     if (isset($_POST['a03']))
-    {
-
+    {// space count clean
+        $text_out = cleancode3($text_in);
     }
     if (isset($_POST['a04']))
-    {
-
+    {// remove coments
+        $text_out = cleancode3($text_in,['▸','▄','█','▀','░','#']);
     }
     if (isset($_POST['a05']))
-    {
-
+    {// debug
+        $output = $text_in;if (is_array($output)){$output = implode(',', $output);}
+        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
     }
-
     
     if ($text_out != $text_in)
     {
         $cookie_age = isset($_COOKIE['age']) ? $_COOKIE['age'] : 0;
         setcookie('text', base64_encode($text_out), $cookie_age, "/");
     }
-
-}?>
+}
+?>
 
 
 
@@ -93,6 +130,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Pootis-configuration</title>
 
     <style>
+        .preserve-whitespace
+        {
+        white-space: pre;
+        }
     </style>
 
 </head>
@@ -101,62 +142,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <p>configuration</p>
         <li><a href="index.php">go back</a></li>
     </header>
+
     <main>
-
-        <p id="cookieText">!</p>
-
+        <p id="cookieText" class="preserve-whitespace">!</p>
         <script>
             let previousText = "";
-
             function getCookie(name) {
                 let nameEQ = name + "=";
                 let ca = document.cookie.split(';');
-                for (let i = 0; i < ca.length; i++) {
+                for (let i = 0; i < ca.length; i++){
                     let c = ca[i];
                     while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);}
+                return null;}
 
-            function updateCookieText()
-            {
+            function b64DecodeUnicode(str) {
+                return decodeURIComponent(atob(str).split('').map(function(c){
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));}
+
+            function updateCookieText() {
                 let encodedText = getCookie('text');
                 let textElement = document.getElementById('cookieText');
-                let text = encodedText !== null ? atob(decodeURIComponent(encodedText)) : "______";
+                let text = encodedText !== null ? b64DecodeUnicode(encodedText) : "______";
                 text = text.replace(/\n/g, '<br>');
-                if (text !== previousText)
-                {
+                if (text !== previousText){
                     textElement.innerHTML = text;
-                    previousText = text;
-                }
-            }
+                    previousText = text;}}
+
             setInterval(updateCookieText, 500);
         </script>
 
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <p>
-            <input type="checkbox" name="a01" id="a01"><br>
-            <input type="checkbox" name="a02" id="a02"><br>
-            <input type="checkbox" name="a03" id="a03"><br>
-            <input type="checkbox" name="a04" id="a04"><br>
-            <input type="checkbox" name="a05" id="a05"><br>
-        </p>
+            <label>{ clean </label> <input type="checkbox" name="a01" id="a01"><br>
+            <label>= count </label> <input type="checkbox" name="a02" id="a02"><br>
+            <label>3 spaces</label> <input type="checkbox" name="a03" id="a03"><br>
+            <label>coments </label> <input type="checkbox" name="a04" id="a04"><br>
+            <label>debug   </label> <input type="checkbox" name="a05" id="a05"><br>
             <input type="submit" value="go"><br>
         </form>
-
-    
-
-        
-        
-        
-        
     </main>
 
     <footer>
         <p>&copy; 2023 Pootis</p>
     </footer>
-
 </body>
 
 </html>
