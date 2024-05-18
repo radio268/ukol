@@ -57,26 +57,32 @@ function cleancode3($input) {
 
 function cleancode4($input, $preserveChars = []) {
     $lines = explode("\n", $input);
-
     $modifiedLines = [];
 
     foreach ($lines as $line) {
-        $line = preg_replace('/\/\/.*$/', '', $line);
-
+        // Check if the line contains any of the preserve characters
         $preserve = false;
         foreach ($preserveChars as $char) {
-            if (strpos($line, $char, strpos($line, '//')) !== false) {
+            if (strpos($line, $char) !== false) {
                 $preserve = true;
                 break;
             }
         }
-        if (!$preserve) {
-            $modifiedLines[] = $line;
+
+        // Split the line by '//'
+        $parts = explode('//', $line, 2);
+        
+        // Keep only the part before the comment if preservation condition is not met
+        if (!$preserve && isset($parts[1])) {
+            $line = $parts[0];
         }
+
+        // Add the line to the modified lines array
+        $modifiedLines[] = $line;
     }
+
     return implode("\n", $modifiedLines);
 }
-
 
 
 if (isset($_COOKIE['text'])) {$text_in = base64_decode($_COOKIE['text']);}
@@ -104,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     if (isset($_POST['a04']))
     {// remove coments
-        $text_out = cleancode3($text_in,['▸','▄','█','▀','░','#']);
+        $text_out = cleancode4($text_in,['▸','▄','█','▀','░','#']);
     }
     if (isset($_POST['a05']))
     {// debug
@@ -156,10 +162,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);}
                 return null;}
 
-            function b64DecodeUnicode(str) {
-                return decodeURIComponent(atob(str).split('').map(function(c){
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));}
+                function b64DecodeUnicode(str)
+                {
+                    try
+                    {
+                        let urlDecodedString = decodeURIComponent(str); // URL-decode first
+                        let binaryString = atob(urlDecodedString); // Base64-decode
+                        let decodedString = decodeURIComponent(Array.prototype.map.call(binaryString, function(c) {
+                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                        }).join(''));
+                        return decodedString;
+                    }
+                    catch (e)
+                    {
+                        console.error('Failed to decode base64 URL-encoded string:', e);
+                        return "Decoding error";
+                    }
+                }
 
             function updateCookieText() {
                 let encodedText = getCookie('text');
