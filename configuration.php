@@ -114,8 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     if (isset($_POST['a05']))
     {// debug
-        $output = $text_in;if (is_array($output)){$output = implode(',', $output);}
-        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        
     }
     
     if ($text_out != $text_in)
@@ -134,72 +133,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <head>
     <meta charset="UTF-8">
     <title>Pootis-configuration</title>
-
+    <script src="showcookie.js" defer></script>
     <style>
         .preserve-whitespace
         {
-        white-space: pre;
+            white-space: pre;
+        }
+        .container
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-section
+        {
+            width: 300px;
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+        .right-section
+        {
+            flex: 1; 
+            background-color: #e0e0e0;
+            text-align: left;
         }
     </style>
-
 </head>
+
 <body>
     <header>
         <p>configuration</p>
-        <li><a href="index.php">go back</a></li>
+        <li><a href="index.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
     <main>
-        <p id="cookieText" class="preserve-whitespace">!</p>
-        <script>
-            let previousText = "";
-            function getCookie(name) {
-                let nameEQ = name + "=";
-                let ca = document.cookie.split(';');
-                for (let i = 0; i < ca.length; i++){
-                    let c = ca[i];
-                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);}
-                return null;}
+        <div class="container">
+            <div class="left-section">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <label>{ clean </label> <input type="checkbox" name="a01" id="a01"><br>
+                    <label>= count </label> <input type="checkbox" name="a02" id="a02"><br>
+                    <label>3 spaces</label> <input type="checkbox" name="a03" id="a03"><br>
+                    <label>coments </label> <input type="checkbox" name="a04" id="a04"><br>
+                    <label>debug   </label> <input type="checkbox" name="a05" id="a05"><br>
+                    <input type="submit" value="go"><br>
+                </form>
+            </div>
 
-                function b64DecodeUnicode(str)
-                {
-                    try
-                    {
-                        let urlDecodedString = decodeURIComponent(str); // URL-decode first
-                        let binaryString = atob(urlDecodedString); // Base64-decode
-                        let decodedString = decodeURIComponent(Array.prototype.map.call(binaryString, function(c) {
-                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                        }).join(''));
-                        return decodedString;
-                    }
-                    catch (e)
-                    {
-                        console.error('Failed to decode base64 URL-encoded string:', e);
-                        return "Decoding error";
-                    }
-                }
-
-            function updateCookieText() {
-                let encodedText = getCookie('text');
-                let textElement = document.getElementById('cookieText');
-                let text = encodedText !== null ? b64DecodeUnicode(encodedText) : "______";
-                text = text.replace(/\n/g, '<br>');
-                if (text !== previousText){
-                    textElement.innerHTML = text;
-                    previousText = text;}}
-
-            setInterval(updateCookieText, 500);
-        </script>
-
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label>{ clean </label> <input type="checkbox" name="a01" id="a01"><br>
-            <label>= count </label> <input type="checkbox" name="a02" id="a02"><br>
-            <label>3 spaces</label> <input type="checkbox" name="a03" id="a03"><br>
-            <label>coments </label> <input type="checkbox" name="a04" id="a04"><br>
-            <label>debug   </label> <input type="checkbox" name="a05" id="a05"><br>
-            <input type="submit" value="go"><br>
-        </form>
+            <div class="right-section">
+                <p id="cookieText" class="preserve-whitespace">!</p>
+            </div>
+        </div>
     </main>
 
     <footer>

@@ -11,13 +11,9 @@ else
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-
-    
-    
     $list1 = array();
     $list2 = array();
     $text_out = $text_in;
-
 
     if (isset($_POST['c01'])){
         isset($_POST['a01']) ? array_push($list1, $_POST['a01']) : array_push($list1, ' ');
@@ -79,7 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         setcookie('text', base64_encode($text_out), $cookie_age, "/");
     }
 
-}?>
+}
+?>
 
 
 <!DOCTYPE html>
@@ -88,78 +85,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <head>
     <meta charset="UTF-8">
     <title>Pootis-namechage</title>
-
+    <script src="showcookie.js" defer></script>
     <style>
+        .preserve-whitespace
+        {
+            white-space: pre;
+        }
+        .container
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-section
+        {
+            width: 400px;
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+        .right-section
+        {
+            flex: 1; 
+            background-color: #e0e0e0;
+            text-align: left;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <h1>name change</h1>
-        <li><a href="index.php">go back</a></li>
-        <br>
-        <br>
-
-
-        <p id="cookieText">!</p>
-
-        <script>
-            let previousText = "";
-
-            function getCookie(name) {
-                let nameEQ = name + "=";
-                let ca = document.cookie.split(';');
-                for (let i = 0; i < ca.length; i++) {
-                    let c = ca[i];
-                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
-
-            function updateCookieText()
-            {
-                let encodedText = getCookie('text');
-                let textElement = document.getElementById('cookieText');
-                let text = encodedText !== null ? atob(decodeURIComponent(encodedText)) : "______";
-                text = text.replace(/\n/g, '<br>');
-                if (text !== previousText)
-                {
-                    textElement.innerHTML = text;
-                    previousText = text;
-                }
-            }
-            setInterval(updateCookieText, 500);
-        </script>
-
-
+        <li><a href="index.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
-    <!-- main content  -------------------------------------------------------------------------------------------->
     <main>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            
-                <input type="checkbox" name="type" id="type"><br>
-            
-                <input type="text" name="a01" id="a01"><input type="text" name="b01" id="b01"><input type="checkbox" name="c01" id="c01"><br>
-                <input type="text" name="a02" id="a02"><input type="text" name="b02" id="b02"><input type="checkbox" name="c02" id="c02"><br>
-                <input type="text" name="a03" id="a03"><input type="text" name="b03" id="b03"><input type="checkbox" name="c03" id="c03"><br>
-                <input type="text" name="a04" id="a04"><input type="text" name="b04" id="b04"><input type="checkbox" name="c04" id="c04"><br>
-                <input type="text" name="a05" id="a05"><input type="text" name="b05" id="b05"><input type="checkbox" name="c05" id="c05"><br>
-                <input type="text" name="a06" id="a06"><input type="text" name="b06" id="b06"><input type="checkbox" name="c06" id="c06"><br>
-                <input type="text" name="a07" id="a07"><input type="text" name="b07" id="b07"><input type="checkbox" name="c07" id="c07"><br>
-                <input type="text" name="a08" id="a08"><input type="text" name="b08" id="b08"><input type="checkbox" name="c08" id="c08"><br>
-                <input type="text" name="a09" id="a09"><input type="text" name="b09" id="b09"><input type="checkbox" name="c09" id="c09"><br>
-                <input type="text" name="a10" id="a10"><input type="text" name="b10" id="b10"><input type="checkbox" name="c10" id="c10"><br>
-                <input type="text" name="a11" id="a11"><input type="text" name="b11" id="b11"><input type="checkbox" name="c11" id="c11"><br>
-                <input type="text" name="a12" id="a12"><input type="text" name="b12" id="b12"><input type="checkbox" name="c12" id="c12"><br>
-                <input type="text" name="a13" id="a13"><input type="text" name="b13" id="b13"><input type="checkbox" name="c13" id="c13"><br>
-                <input type="text" name="a14" id="a14"><input type="text" name="b14" id="b14"><input type="checkbox" name="c14" id="c14"><br>
-                <input type="text" name="a15" id="a15"><input type="text" name="b15" id="b15"><input type="checkbox" name="c15" id="c15"><br>
-                <input type="text" name="a16" id="a16"><input type="text" name="b16" id="b16"><input type="checkbox" name="c16" id="c16"><br>
+        <div class="container">
+                <div class="left-section">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <input type="checkbox" name="type" id="type"><br>
+                            <input type="text" name="a01" id="a01"><input type="text" name="b01" id="b01"><input type="checkbox" name="c01" id="c01"><br>
+                            <input type="text" name="a02" id="a02"><input type="text" name="b02" id="b02"><input type="checkbox" name="c02" id="c02"><br>
+                            <input type="text" name="a03" id="a03"><input type="text" name="b03" id="b03"><input type="checkbox" name="c03" id="c03"><br>
+                            <input type="text" name="a04" id="a04"><input type="text" name="b04" id="b04"><input type="checkbox" name="c04" id="c04"><br>
+                            <input type="text" name="a05" id="a05"><input type="text" name="b05" id="b05"><input type="checkbox" name="c05" id="c05"><br>
+                            <input type="text" name="a06" id="a06"><input type="text" name="b06" id="b06"><input type="checkbox" name="c06" id="c06"><br>
+                            <input type="text" name="a07" id="a07"><input type="text" name="b07" id="b07"><input type="checkbox" name="c07" id="c07"><br>
+                            <input type="text" name="a08" id="a08"><input type="text" name="b08" id="b08"><input type="checkbox" name="c08" id="c08"><br>
+                            <input type="text" name="a09" id="a09"><input type="text" name="b09" id="b09"><input type="checkbox" name="c09" id="c09"><br>
+                            <input type="text" name="a10" id="a10"><input type="text" name="b10" id="b10"><input type="checkbox" name="c10" id="c10"><br>
+                            <input type="text" name="a11" id="a11"><input type="text" name="b11" id="b11"><input type="checkbox" name="c11" id="c11"><br>
+                            <input type="text" name="a12" id="a12"><input type="text" name="b12" id="b12"><input type="checkbox" name="c12" id="c12"><br>
+                            <input type="text" name="a13" id="a13"><input type="text" name="b13" id="b13"><input type="checkbox" name="c13" id="c13"><br>
+                            <input type="text" name="a14" id="a14"><input type="text" name="b14" id="b14"><input type="checkbox" name="c14" id="c14"><br>
+                            <input type="text" name="a15" id="a15"><input type="text" name="b15" id="b15"><input type="checkbox" name="c15" id="c15"><br>
+                            <input type="text" name="a16" id="a16"><input type="text" name="b16" id="b16"><input type="checkbox" name="c16" id="c16"><br>
+                            <input type="submit" value="go"><br>
+                    </form>
+                </div>
 
-                <input type="submit" value="go"><br>
-        </form>
+                <div class="right-section">
+                    <p id="cookieText" class="preserve-whitespace">!</p>
+                </div>
 
         <script>
             document.addEventListener("DOMContentLoaded", function()
@@ -192,13 +177,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                             var prevIndex = (index - 1 + inputs.length) % inputs.length;
                             inputs[prevIndex].focus();
                         }
+                    });
                 });
             });
-        });
-    </script>
-
-        
+        </script>
     </main>
+
     <footer>
         <p>&copy; 2023 Pootis</p>
     </footer>
