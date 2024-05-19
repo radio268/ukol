@@ -98,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </main>
 
     <footer>
+        <a href="help.html">help</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 
