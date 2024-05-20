@@ -58,8 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <p>configuration</p>
-        <li><a href="index.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
+        <p>menu</p><img src="images/POOTIS_LOGO.svg" width="841" height="595">
+        <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
     <main>

@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <body>
     <header>
         <h1>name change</h1>
-        <li><a href="index.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
+        <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
     <main>
