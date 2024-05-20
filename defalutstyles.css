@@ -1,0 +1,48 @@
+.preserve-whitespace
+{
+    white-space: pre;
+}
+.container
+{
+    display: flex;
+    justify-content: space-between;
+}
+input[type="text"], input[type="password"] {
+    border: 2px solid #999; /* Use a darker color for the border */
+    padding: 6px 10px; /* Increase padding for a bulkier appearance */
+    font-family: "Courier New", monospace; /* Use a monospaced font for a classic feel */
+    font-size: 18px; /* Increase font size for readability */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Darker text color */
+
+}
+
+select {
+    border: 2px solid #999; /* Use a darker color for the border */
+    padding: 6px 10px; /* Increase padding for a bulkier appearance */
+    font-family: "Courier New", monospace; /* Use a monospaced font for a classic feel */
+    font-size: 18px; /* Increase font size for readability */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Darker text color */
+    
+}
+
+textarea {
+    border: 2px solid #999; /* Use a darker color for the border */
+    padding: 6px 10px; /* Increase padding for a bulkier appearance */
+    font-family: "Courier New", monospace; /* Use a monospaced font for a classic feel */
+    font-size: 15px; /* Increase font size for readability */
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333; /* Darker text color */
+
+}
+
+p {
+    font-family: "Courier New", monospace; /* Use a monospaced font for a classic feel */  
+    color: #333; /* Darker text color */
+}
+
+label {
+    font-family: "Courier New", monospace; /* Use a monospaced font for a classic feel */  
+    color: #333; /* Darker text color */
+}

@@ -86,19 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <meta charset="UTF-8">
     <title>Pootis-namechage</title>
     <script src="showcookie.js" defer></script>
+    <link rel="stylesheet" href="defalutstyles.css">
     <style>
-        .preserve-whitespace
-        {
-            white-space: pre;
-        }
-        .container
-        {
-            display: flex;
-            justify-content: space-between;
-        }
         .left-section
         {
-            width: 400px;
+            width: 300px;
             background-color: #f0f0f0;
             text-align: left;
         }

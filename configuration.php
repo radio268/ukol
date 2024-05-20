@@ -134,16 +134,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <meta charset="UTF-8">
     <title>Pootis-configuration</title>
     <script src="showcookie.js" defer></script>
+    <link rel="stylesheet" href="defalutstyles.css">
     <style>
-        .preserve-whitespace
-        {
-            white-space: pre;
-        }
-        .container
-        {
-            display: flex;
-            justify-content: space-between;
-        }
         .left-section
         {
             width: 300px;

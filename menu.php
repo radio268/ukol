@@ -31,19 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Pootis-menu</title>
     <script src="showcookie.js" defer></script>
+    <link rel="stylesheet" href="defalutstyles.css">
     <style>
-        .preserve-whitespace
-        {
-            white-space: pre;
-        }
-        .container
-        {
-            display: flex;
-            justify-content: space-between;
-        }
         .left-section
         {
-            width: 400px;
+            width: 500px;
             background-color: #f0f0f0;
             text-align: left;
         }
@@ -58,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <p>menu</p><img src="images/POOTIS_LOGO.svg" width="841" height="595">
+        <p>menu</p>
         <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
@@ -66,28 +58,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
             <div class="left-section">
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                    <p>
-                        text to be edited:
-                        <textarea name="text_in" id="text_in" rows="4" cols="50" style="white-space: pre-wrap;"></textarea><br>
 
-                        what do you want to do with it:
-                        <select name="selection_1" id="selection_1">
-                            <option value="cname"> namechange    </option>
-                            <option value="confg"> configuration </option>
-                            <option value="style"> style         </option>
-                        </select><br>
+                    <label>text to be edited:</label> <br>
+                    <textarea name="text_in" id="text_in" rows="4" cols="50" style="white-space: pre-wrap;"></textarea><br>
 
-                        how long should the cookie last:
-                        <select name="selection_2" id="selection_2">
-                            <option value="0">until search engine close </option>
-                            <option value="1">  1 x day                 </option>
-                            <option value="2">  2 x day                 </option>
-                            <option value="3">  7 x day                 </option>
-                            <option value="4"> 14 x day                 </option>
-                        </select><br>
+                    <label>what do you want to do with it:</label> <br>
+                    <select name="selection_1" id="selection_1">
+                        <option value="cname"> namechange    </option>
+                        <option value="confg"> configuration </option>
+                        <option value="style"> style         </option>
+                    </select><br>
 
-                        <input type="submit" value="go"><br>
-                    </p>
+                    <label>how long should the cookie last:</label> <br>
+                    <select name="selection_2" id="selection_2">
+                        <option value="0">until search engine close </option>
+                        <option value="1">  1 x day                 </option>
+                        <option value="2">  2 x day                 </option>
+                        <option value="3">  7 x day                 </option>
+                        <option value="4"> 14 x day                 </option>
+                    </select><br>
+
+                    <input type="submit" value="go"><br>
+                    
                 </form>
             </div>
 
