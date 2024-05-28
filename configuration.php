@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <body>
     <header>
-        <p>configuration</p>
+        <p>CONFIGURATION</p>
         <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </main>
 
     <footer>
-        <a href="help.html">help</a>
+        <a href="help.html">help</a> <a href="lines.html">specialLines</a> <a href="other.html">hideout</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 </body>

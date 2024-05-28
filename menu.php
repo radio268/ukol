@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if     ($selection1 == "cname") {header("Location: name_change.php"  );}
     elseif ($selection1 == "confg") {header("Location: configuration.php");}
-    elseif ($selection1 == "style") {header("Location: style.php"        );}
 
     exit;
 }
@@ -50,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <p>menu</p>
+        <p>MENU</p>
         <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
     </header>
 
@@ -66,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="selection_1" id="selection_1">
                         <option value="cname"> namechange    </option>
                         <option value="confg"> configuration </option>
-                        <option value="style"> style         </option>
                     </select><br>
 
                     <label>how long should the cookie last:</label> <br>
@@ -90,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </main>
 
     <footer>
-        <a href="help.html">help</a>
+        <a href="help.html">help</a> <a href="lines.html">specialLines</a> <a href="other.html">hideout</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 
