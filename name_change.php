@@ -136,6 +136,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
                 <div class="right-section">
                     <p id="cookieText" class="preserve-whitespace">!</p>
+                    <br>
+                    <p id="logText" class="preserve-whitespace">!</p>
                 </div>
 
         <script>

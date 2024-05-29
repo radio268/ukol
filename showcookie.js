@@ -37,8 +37,30 @@ function updateCookieText()
     text = text.replace(/\n/g, '<br>');
     if (text !== previousText)
     {
+        logTextChanges(previousText, text);
         textElement.innerHTML = text;
         previousText = text;
     }
 }
 setInterval(updateCookieText, 500);
+
+
+
+
+function logTextChanges(previousText, newText) {
+    let words1 = previousText.split(' ');
+    let words2 = newText.split(' ');
+    let logText = '';
+
+    // Find changed words or sentences
+    for (let i = 0; i < Math.min(words1.length, words2.length); i++) {
+        if (words1[i] !== words2[i]) {
+            logText += `${words1[i] || ''} => ${words2[i] || ''}<br>`;
+        }
+    }
+
+    // Update log if changes found
+    if (logText !== '') {
+        document.getElementById('logText').innerHTML += logText;
+    }
+}
