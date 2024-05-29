@@ -2,6 +2,14 @@ body {
     background-color: #f0f0f0;
 }
 
+header {
+    background-color: #f0f0f0;
+}
+
+footer {
+    background-color: #f0f0f0;
+}
+
 .preserve-whitespace
 {
     white-space: pre;
