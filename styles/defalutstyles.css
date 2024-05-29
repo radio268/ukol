@@ -10,6 +10,11 @@ footer {
     background-color: #f0f0f0;
 }
 
+.logos {
+    font-size: 1.5em;     /* Font size for elements with the logos class */
+    font-weight: bold;    /* Make the text bold for elements with the logos class */
+}
+
 .preserve-whitespace
 {
     white-space: pre;

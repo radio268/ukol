@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .left-section
         {
             width: 500px;
-            background-color: #f0f0f0;
+            background-color: #c4c2c2;
             text-align: left;
         }
         .right-section
@@ -49,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <header>
-        <p>MENU</p>
-        <li><a href="../sites/menu.php">index</a> <a href="../sites/name_change.php">name change</a> <a href="../sites/configuration.php">configuration</a></li>
+        <p class="logos">MENU</p>
     </header>
 
     <main>
         <div class="container">
             <div class="left-section">
+                <li><a href="../sites/menu.php">INDEX</a> <a href="../sites/name_change.php">NAME CHANGE</a> <a href="../sites/configuration.php">CONFIGURATION</a></li>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
                     <label>text to be edited:</label> <br>
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </main>
 
     <footer>
-        <a href="../sites/help.html">help</a> <a href="../sites/lines.html">specialLines</a> <a href="../sites/other.html">hideout</a>
+        <a href="../sites/help.html">HELP</a> <a href="../sites/lines.html">SPECIALLINES</a> <a href="../sites/other.html">HIDEOUT</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 

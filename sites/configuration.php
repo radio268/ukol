@@ -139,13 +139,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         .left-section
         {
             width: 300px;
-            background-color: #f0f0f0;
+            background-color: #c4c2c2;
             text-align: left;
         }
         .right-section
         {
             flex: 1; 
-            background-color: #e0e0e0;
+            background-color: #b0b0b0;
             text-align: left;
         }
     </style>
@@ -153,13 +153,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <body>
     <header>
-        <p>CONFIGURATION</p>
-        <li><a href="../sites/menu.php">index</a> <a href="../sites/name_change.php">name change</a> <a href="../sites/configuration.php">configuration</a></li>
+        <p class="logos">CONFIGURATION</p>
     </header>
 
     <main>
         <div class="container">
             <div class="left-section">
+                <li><a href="../sites/menu.php">INDEX</a> <a href="../sites/name_change.php">NAME CHANGE</a> <a href="../sites/configuration.php">CONFIGURATION</a></li>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <label>{ clean </label> <input type="checkbox" name="a01" id="a01"><br>
                     <label>= count </label> <input type="checkbox" name="a02" id="a02"><br>
@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </main>
 
     <footer>
-        <a href="../sites/help.html">help</a> <a href="../sites/lines.html">specialLines</a> <a href="../sites/other.html">hideout</a>
+        <a href="../sites/help.html">HELP</a> <a href="../sites/lines.html">SPECIALLINES</a> <a href="../sites/other.html">HIDEOUT</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 </body>
