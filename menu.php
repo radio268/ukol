@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Pootis-menu</title>
+    <script src="diff_match_patch.js"></script>
     <script src="showcookie.js" defer></script>
     <link rel="stylesheet" href="defalutstyles.css">
     <style>
