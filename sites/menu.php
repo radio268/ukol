@@ -29,9 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Pootis-menu</title>
-    <script src="diff_match_patch.js"></script>
-    <script src="showcookie.js" defer></script>
-    <link rel="stylesheet" href="defalutstyles.css">
+    <script src="../javascrypt/showcookie.js" defer></script>
+    <link rel="stylesheet" href="../styles/defalutstyles.css">
     <style>
         .left-section
         {
@@ -51,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <p>MENU</p>
-        <li><a href="menu.php">index</a> <a href="name_change.php">name change</a> <a href="configuration.php">configuration</a></li>
+        <li><a href="../sites/menu.php">index</a> <a href="../sites/name_change.php">name change</a> <a href="../sites/configuration.php">configuration</a></li>
     </header>
 
     <main>
@@ -84,14 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="right-section">
                 <p id="cookieText" class="preserve-whitespace">!</p>
-                <br>
-                <p id="logText" class="preserve-whitespace">!</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <a href="help.html">help</a> <a href="lines.html">specialLines</a> <a href="other.html">hideout</a>
+        <a href="../sites/help.html">help</a> <a href="../sites/lines.html">specialLines</a> <a href="../sites/other.html">hideout</a>
         <p>&copy; 2023 Pootis</p>
     </footer>
 
