@@ -112,10 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {// remove coments
         $text_out = cleancode4($text_in,['▸','▄','█','▀','░','#']);
     }
-    if (isset($_POST['a05']))
-    {// debug
-        
-    }
     
     if ($text_out != $text_in)
     {
@@ -165,7 +161,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     <label>= count </label> <input type="checkbox" name="a02" id="a02"><br>
                     <label>3 spaces</label> <input type="checkbox" name="a03" id="a03"><br>
                     <label>coments </label> <input type="checkbox" name="a04" id="a04"><br>
-                    <label>debug   </label> <input type="checkbox" name="a05" id="a05"><br>
                     <input type="submit" value="go"><br>
                 </form>
             </div>
