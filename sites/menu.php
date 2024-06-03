@@ -89,7 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <footer>
         <a href="../sites/help.html">HELP</a> <a href="../sites/lines.html">SPECIALLINES</a> <a href="../sites/other.html">HIDEOUT</a>
-        <p>&copy; 2023 Pootis</p>
+        <p id="year-paragraph"></p>
+        <script src="script.js"></script>
     </footer>
 
 </body>
