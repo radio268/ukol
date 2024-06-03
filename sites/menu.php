@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <a href="../sites/help.html">HELP</a> <a href="../sites/lines.html">SPECIALLINES</a> <a href="../sites/other.html">HIDEOUT</a>
         <p id="year-paragraph"></p>
-        <script src="script.js"></script>
+        <script src="../javascrypt/fotter.js"></script>
     </footer>
 
 </body>
